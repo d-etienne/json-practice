@@ -1,0 +1,110 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+#contentBox {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#nav {
+    display: flex;
+    justify-content: flex-end;
+    background-color: lightgreen;
+    height: 10vh;
+    align-items: center;
+}
+
+#nav a {
+    text-decoration: unset;
+    color: black;
+    margin: 2vh;
+    font-size: 1.5rem;
+}
+
+#hero {
+    margin-top: 8vh;
+    align-self: center;
+    position: relative;
+}
+/* Grid full of images */
+.imgGrid {
+    display: grid;
+    grid-template-rows: repeat(3, 25vh);
+    grid-template-columns: repeat(6, 25vh);
+    position: relative
+}
+
+.treat {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3vh;
+}
+
+.gridContainer {
+    position: relative;
+}
+
+.grid {
+    display: grid;
+    grid-template-rows: repeat(2, 25vh);
+    grid-template-columns: repeat(3, 25vh);
+    position: relative;
+    padding: 5vh;
+}
+
+/* Grid full of text */
+.txtGrid {
+    /* background-color: coral; */
+    position: absolute;
+    top: 0;
+    text-align: center;
+    
+}
+
+/* .txtGrid:hover {
+   color:white;
+} */
+
+
+.gridTxt {
+    height: 25vh;
+    width: 25vh;
+}
+
+.gridTxt:hover{
+    position: relative;
+    color: white;
+
+}
+
+.subtitle, .title {
+    text-align: center;
+}
+
+.title {
+    font-family: 'Dela Gothic One', cursive;
+    font-size: 2.5rem;
+    border-bottom: black 0.5rem solid;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+#logo {
+    position: absolute;
+    bottom: 10vh;
+    left: 40vh;
+    height: 50vh;
+    width: 70vh;
+    background-color: cadetblue;
+}
+ /* images that are in the grid */
+.gridImage{
+   background-color: lightcoral;
+   height: 25vh;
+   width: 25vh;
+   border: black 1px solid;
+}
