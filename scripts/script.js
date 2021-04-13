@@ -1,56 +1,31 @@
-let infoJSON = {
-    "name" : "The Bake Shop",
-    "logo" : "bakeryLogo.png",
-    "address" : "1001 Faries Lane Wappapello, MO 63966",
-    "slogan" : "welcome to your local bake shop, with your favorite baked goods"
-};
-
 let menu = [
     {
-        "pastry_type" : "Cookies",
-        "name" : ["Sugar", "SnickerDoodle", "Chocolate Chip", "Macadamia Nut",
-               "Peanut Butter", "Red Velvet", "Oatmeal Raisin"],
-        "images": ["Sugar", "SnickerDoodle", "Chocolate Chip", "Macadamia Nut",
-        "Peanut Butter", "Red Velvet", "Oatmeal Raisin"],
+        "pastry_type" : "COOKIES",
+        "name" : ["Sugar", "SnickerDoodle", "Chocolate Chip","Macadamia Nut","Peanut Butter", "Red Velvet", "Oatmeal Raisin"],
+        "images": ["images/sugarCookies.jpg", "images/snickerdoodles.jpg", "images/chocolateChip.jpg", "images/macademiaNut.webp", "images/peanutButter.jpg", "images/redVelvet.jpg", "images/oatmealcookie.jpg"],
         "size" : [ "12 count" , "24 count" , "28 count"],
-        "price": [7.50 , 15, 30]
+        "price": ["12C : $7.50" , " 24C : $15", "28C : $30"]
     }
     ,
     {
-        "pastry_type" : "Cakes",
+        "pastry_type" : "CAKES",
         "name" : ["Vanilla", "Chocolate", "Red Velvet", "Funfetti", "Marble"],
-        "images":["Vanilla", "Chocolate", "Red Velvet", "Funfetti", "Marble"],
+        "images":["images/Vanilla-Cake.jpg", "images/chocolateCake.jpg", "images/redVelvetCake.jpg", "images/funfetti-cake.jpg", "images/marbleCake.jpg"],
         "size" : [ "small", "medium", "large"],
-        "price": [20 , 40, 80]
+        "price": ["S : $20" , "M : $40", "L : $80"]
     }
     ,
     {
-        "pastry_type" : "Pastries",
+        "pastry_type" : "PASTRIES",
         "name" : ["Sandwich Bread", "Brioche", "Corn Bread", "Sweet Potato Bread", "Banana Bread", "Monkey Bread"],
-        "images": ["Sandwich Bread", "Brioche", "Corn Bread", "Sweet Potato Bread", "Banana Bread", "Monkey Bread"],
+        "images": ["images/sandwhichBread.jpg","images/brioche.jpg", "images/cornbread.jpg", "images/sweetPotatoBread.jpg", "images/bananaBread.jpg", "images/monkeyBread.jpg"],
         "size" : ["Fixed"],
-        "price" : [15, 15, 10 , 15, 15, 20]
+        "price" : ["$15", "$15", "$10" , "$15", "$15", "$20"]
     }
 ];
 
 
-
-/*
-
-homepage script
-
-let homeGrid = document.getElementsByClassName("imgGrid");
-
-for (var idx = 0; idx < menu.length; idx++){
-    addGridImageContent(homeGrid[0], menu[idx]);
-} 
-
-*/
-
-
-/*
-
-menu script
+//menu script
 
 let treats = document.getElementsByClassName("treat");
 
@@ -62,7 +37,21 @@ for (var idx = 0; idx < treats.length; idx++) {
     treats[idx].appendChild(newTitle);
 
     let newSubtitle = document.createElement("div");
-    newSubtitle.innerText = menu[idx]["size"];
+    let sizeLine = document.createElement("p");
+    sizeLine.innerText = "We offer our " + menu[idx]["pastry_type"].toLowerCase() + 
+    " in the following sizes: \r";
+    let sizeList = document.createElement("ul");
+    newSubtitle.appendChild(sizeLine);
+    newSubtitle.appendChild(sizeList);
+    for (var i = 0; i < menu[idx]["size"].length; i++){
+        let newSizeListElem = document.createElement("li");
+        newSizeListElem.innerText = menu[idx]["size"][i];
+        sizeList.appendChild(newSizeListElem);
+    }
+    let priceLine = document.createElement("p");
+    priceLine.innerText = "The prices can be found when you hover over the image of the " + menu[idx]["pastry_type"].toLowerCase() + " that you want.";
+    
+    newSubtitle.appendChild(priceLine);
     newSubtitle.classList.add("subtitle");
     
     treats[idx].appendChild(newSubtitle);
@@ -74,40 +63,66 @@ for (var idx = 0; idx < treats.length; idx++) {
 
     let newImgGrid = document.createElement("div");
     newImgGrid.classList.add("grid");
-    addGridImageContent(newImgGrid, menu[idx]);
+    addGridImageContent(newImgGrid, idx);
 
     newGrid.appendChild(newImgGrid);
 
     let newTxtGrid = document.createElement("div");
     newTxtGrid.classList.add("grid");
     newTxtGrid.classList.add("txtGrid");
-    addGridTextContent(newTxtGrid, menu[idx]);
+    addGridTextContent(newTxtGrid, idx);
 
     newGrid.appendChild(newTxtGrid);
 }
 
-*/
+//homepage script
 
-let informationBox = document.getElementById("info");
-informationBox.innerText = infoJSON["address"] + "\r" + infoJSON["slogan"];
+let homeGrid = document.getElementsByClassName("imgGrid");
+
+for (var idx = 0; idx < menu.length; idx++){
+    addGridImageContent(homeGrid[0], idx);
+} 
 
 
 
+// adds images to the grid
 
-function addGridImageContent(grid, imgArr) {
-    for (var idx = 0; idx < imgArr["images"].length; idx++) {
-        let newGridImage = document.createElement("div");
+function addGridImageContent(grid, menuIdx) {
+    for (var idx = 0; idx < menu[menuIdx]["images"].length; idx++) {
+        let newGridImage = document.createElement("img");
         newGridImage.classList.add("gridImage");
-        // newGridImage.src = imgGrid["images"][idx];
+        newGridImage.src = menu[menuIdx]["images"][idx];
         grid.appendChild(newGridImage);
     }
+    
 }
 
-function addGridTextContent(grid, txtArr) {
-    for (var idx = 0; idx < txtArr["name"].length; idx++) {
+// adds text to the grid
+function addGridTextContent(grid, menuIdx) {
+    console.log(menuIdx);
+    for (var idx = 0; idx < menu[menuIdx]["name"].length; idx++) {
         let newGridText = document.createElement("div");
         newGridText.classList.add("gridTxt");
-        newGridText.innerText = txtArr["name"][idx];
+        let newNameTag = document.createElement("p");
+        newNameTag.innerText = menu[menuIdx]["name"][idx];
+        newGridText.appendChild(newNameTag);
+
+        // adds price list for all treats other than pastries
+        if (menuIdx < 2){
+            let newPriceList = document.createElement("div");
+            newGridText.appendChild(newPriceList);
+            for (var i = 0; i < menu[menuIdx]["price"].length; i++){
+                    let newPriceElem = document.createElement("div");
+                    newPriceElem.innerText = menu[menuIdx]["price"][i];
+                    newPriceList.appendChild(newPriceElem);
+            }
+        }
+        // adds prices for pastries
+        else{
+            let newPriceTag = document.createElement("p");
+            newPriceTag.innerText = menu[menuIdx]["price"][idx];
+            newGridText.appendChild(newPriceTag);
+        }
         grid.appendChild(newGridText);
     }
 }

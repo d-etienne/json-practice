@@ -1,30 +1,69 @@
 html, body {
     margin: 0;
     padding: 0;
+    background-color: black;
 }
+
 #contentBox {
     display: flex;
     flex-direction: column;
     font-family: 'Open Sans', sans-serif;
+    color: whitesmoke;
+    align-items: center;
 }
 
 #nav {
     display: flex;
-    justify-content: flex-end;
-    background-color: lightgreen;
-    height: 10vh;
+    position: fixed;
+    justify-content: space-between;
+    height: 15vh;
+    width: 150vh;
     align-items: center;
+    z-index: +99;
+    background-color: black;
+    /* background-color: whitesmoke; */
 }
 
-#nav a {
+#nav0 {
+    display: flex;
+    position: fixed;
+    justify-content: space-evenly;
+    height: 15vh;
+    width: 150vh;
+    align-items: center;
+    z-index: +99;
+    background-color: black;
+}
+
+a {
     text-decoration: unset;
-    color: black;
+    font-family: 'Dela Gothic One', cursive;
+    letter-spacing: 0.25rem;
+    color: whitesmoke;
     margin: 2vh;
-    font-size: 1.5rem;
+    font-size: 1.5rem; 
+}
+
+ .link:hover {
+    border-bottom: rgb(133, 162, 255) 0.5rem solid;
+    padding: 2vh;
+    /* opacity: 0.8; */
+} 
+
+
+
+#nav img {
+    width: 20vh;
+    height:20vh;
+    margin-top: 5vh;
+}
+
+#links {
+    justify-self: flex-end;
 }
 
 #hero {
-    margin-top: 8vh;
+    margin-top: 15vh;
     align-self: center;
     position: relative;
 }
@@ -33,7 +72,20 @@ html, body {
     display: grid;
     grid-template-rows: repeat(3, 25vh);
     grid-template-columns: repeat(6, 25vh);
-    position: relative
+    position: relative;
+}
+
+#filter {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background-color: rgb(57, 95, 223);
+    opacity: 0.5;
+}
+
+#treats {
+    margin-top: 15vh;
 }
 
 .treat {
@@ -42,10 +94,14 @@ html, body {
     flex-direction: column;
     align-items: center;
     padding: 3vh;
+    background-color: rgba(140, 174, 236, 0.5);
+    /* border: cornflowerblue 5px solid ; */
+    margin-top: 10vh;
 }
 
 .gridContainer {
     position: relative;
+    
 }
 
 .grid {
@@ -56,6 +112,7 @@ html, body {
     padding: 5vh;
 }
 
+
 /* Grid full of text */
 .txtGrid {
     /* background-color: coral; */
@@ -65,19 +122,23 @@ html, body {
     
 }
 
-/* .txtGrid:hover {
-   color:white;
-} */
-
 
 .gridTxt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 25vh;
     width: 25vh;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0);
+    font-weight: bolder;
 }
 
 .gridTxt:hover{
     position: relative;
-    color: white;
+    background-color: rgba(245, 245, 245, 0.55);
+    color: rgb(0, 0, 0);
 
 }
 
@@ -87,24 +148,52 @@ html, body {
 
 .title {
     font-family: 'Dela Gothic One', cursive;
-    font-size: 2.5rem;
-    border-bottom: black 0.5rem solid;
+    font-size: 2rem;
+    border-bottom: whitesmoke 0.5rem solid;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    letter-spacing: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
-#logo {
+#thumbnail {
     position: absolute;
-    bottom: 10vh;
+    bottom: 0vh;
     left: 40vh;
-    height: 50vh;
-    width: 70vh;
-    background-color: cadetblue;
+    z-index: +99;
+    height: 70vh;
+    width: 70vh; 
 }
+
  /* images that are in the grid */
 .gridImage{
-   background-color: lightcoral;
    height: 25vh;
    width: 25vh;
    border: black 1px solid;
+   object-fit: cover;
 }
+
+#info {
+    margin-top: 15vh;
+    text-align: center;
+    font-size: 1.25rem;
+    letter-spacing: 0.2rem;
+    font-weight: bold;
+}
+
+h1 {
+    font-family: 'Dela Gothic One', cursive;
+    font-size: 2rem;
+    border-bottom: whitesmoke 0.5rem solid;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 0.5rem;
+    letter-spacing: 0.5rem;
+}
+
+iframe {
+    width:75vh;
+    height:50vh;
+   
+}
+
