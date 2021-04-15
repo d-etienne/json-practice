@@ -83,6 +83,9 @@ for (var idx = 0; idx < menu.length; idx++){
     addGridImageContent(homeGrid[0], idx);
 } 
 
+const el = document.querySelector('img');
+const observer = lozad(el); // passing a `NodeList` (e.g. `document.querySelectorAll()`) is also valid
+observer.observe();
 
 
 // adds images to the grid
@@ -91,6 +94,7 @@ function addGridImageContent(grid, menuIdx) {
     for (var idx = 0; idx < menu[menuIdx]["images"].length; idx++) {
         let newGridImage = document.createElement("img");
         newGridImage.classList.add("gridImage");
+        newGridImage.classList.add("lozad");
         newGridImage.src = menu[menuIdx]["images"][idx];
         grid.appendChild(newGridImage);
     }
